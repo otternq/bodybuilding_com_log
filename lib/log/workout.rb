@@ -8,7 +8,7 @@ class Workout
   def initialize
     @exercises = []
 
-    @alterations = Hash.new(true)
+    @alterations = {}
     @allowed_keys = [:mood,:weight, :cardio, :location,
                      :length, :comments, :instruct]
   end
@@ -43,8 +43,7 @@ class Workout
 
   def pdf_url_alterations(params)
     @alterations.each do |key, value|
-      str = 'yes' if value
-      str = 'no' unless value
+      str = value ? 'yes' : 'no'
       params << "#{key}=#{str}"
     end
   end

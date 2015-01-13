@@ -6,7 +6,7 @@
   routine
   workout
 ).each do |file|
-  require_relative "./#{file}"
+  require_relative "./log/#{file}"
 end
 
 # The module used for reference
