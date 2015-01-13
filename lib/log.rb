@@ -4,6 +4,7 @@
 %w(
   exercise
   routine
+  workout
 ).each do |file|
   require_relative "./#{file}"
 end
