@@ -5,6 +5,7 @@
 require_relative '../lib/log'
 
 workout = Workout.new
+workout.workout_name = 'Monday'
 
 bp = Exercise.new('Bench Press')
 bp.sets << 7
@@ -20,4 +21,4 @@ workout.exercises << ibp
 
 workout.set_alteration(:mood, true)
 
-puts workout.pdf_url
+workout.ascii

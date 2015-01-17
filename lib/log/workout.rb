@@ -60,4 +60,46 @@ class Workout
       URI.encode(param)
     end
   end
+
+  def max_sets
+    @exercises.max do |exercise|
+      exercise.sets.size
+    end.sets.size
+  end
+
+  def exercises_len
+    @exercises.max do |exercise|
+      exercise.name.length
+    end.name.length
+  end
+
+  def ascii
+    puts "Name: #{@workout_name}"
+
+    sets_len = 20
+
+    line = format("%-#{exercises_len}s", 'Exercise')
+    max_sets.times do |i|
+      line += format("%-#{sets_len}s", "| Set #{i+1}")
+    end
+
+    puts line
+
+    line_br = ''
+
+    ((exercises_len + 1) + (sets_len * max_sets)).times do
+      line_br += '='
+    end
+
+    puts line_br
+
+    @exercises.each do |exercise|
+      line = sprintf("%-#{exercises_len}s", exercise.name)
+      exercise.sets.size.times do
+        line += sprintf("%-#{sets_len}s", '|')
+      end
+
+      puts line
+    end
+  end
 end
